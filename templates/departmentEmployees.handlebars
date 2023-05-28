@@ -1,0 +1,28 @@
+{{#if this}}
+<table class="table">
+    <thead>
+        <tr>
+            <th>Nimi</th>
+            <th>E-post</th>
+            <th>Telefon</th>
+            <th>Tegevused</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each this}}
+            <tr>
+                <td>{{this.name}}</td>
+                <td>{{this.email}}</td>
+                <td>{{this.phone}}</td>
+                <td>
+                    <a href="javascript:void(0)" onClick="departmentEmployeeDelete({{this.id}})"><i class="fal fa-trash-alt"></i></a>
+                </td>
+            </tr>
+        {{/each}}
+    </tbody>
+</table>
+{{else}}
+<div class="col-xl-12 text-center">
+    <h4>Pole ühtegi töötajad osakonnas.</h4>
+</div>
+{{/if}}

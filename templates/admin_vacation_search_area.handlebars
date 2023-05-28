@@ -1,0 +1,44 @@
+                            <div class="col-xl-2">
+                                <div class="form-label-group">
+                                    <input type="text" name="name" id="inputFname" class="form-control" placeholder="Töötaja nimi" required="" autofocus="">
+                                    <label for="inputFname">Töötaja nimi</label>
+                                </div>
+                            </div>
+                            <div class="col-xl-2">
+                                <div class="form-label-group">
+                                    <select class="form-control" id="inputType" name="type">
+                                        <option selected value="-1">Kõik</option>
+                                         {{#each types}}
+                                            <option value="{{this.id}}">{{this.name}}</option>
+                                         {{/each}}
+                                    </select>
+                                    <label for="inputType">Puhkuse tüüp</label>
+                                </div>
+                            </div>
+                            <div class="col-xl-2">
+                                <div class="form-label-group">
+                                    <select class="form-control" id="inputStatus" name="status">
+                                        <option selected value="-1">Kõik</option>
+                                        <option value="0">Ootel</option>
+                                        <option value="1">Kinnitatud</option>
+                                        <option value="2">Tagasilükatud</option>
+                                        <option value="3">Tühistatud</option>
+                                    </select>
+                                    <label for="inputStatus">Puhkuse staatus</label>
+                                </div>
+                            </div>
+                            <div class="col-xl-2">
+                                <div class="form-label-group">
+                                    <input type="date" name="start" id="inputStart" class="form-control" placeholder="Puhkuse algus" required="" autofocus="">
+                                    <label for="inputStart">Puhkuse algus</label>
+                                </div>
+                            </div>
+                            <div class="col-xl-2">
+                                <div class="form-label-group">
+                                    <input type="date" name="end" id="inputEnd" class="form-control" placeholder="Puhkuse lõpp" required="" autofocus="">
+                                    <label for="inputEnd">Puhkuse lõpp</label>
+                                </div>
+                            </div>
+                            <div class="col-xl-2">
+                                <button class="btn btn-lg btn-block btn-outline-primary" onClick="allVacationsTable();"><i class="fal fa-search"></i> Otsi</button>
+                            </div>

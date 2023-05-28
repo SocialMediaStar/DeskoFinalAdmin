@@ -1,0 +1,51 @@
+{{#if this.data.length}}
+<table class="table">
+    <thead>
+        <th>Töötaja</th>
+        <th>Osakond</th>
+        <th>Tüüp</th>
+        <th>Periood</th>
+        <th>Puhkusetasu</th>
+        <th>Töötaja kommentaar</th>
+        <th>Staatus</th>
+        <th>Tegevus</th>
+    </thead>
+    <tbody>
+        {{#each data}}
+        <tr>
+            <td>{{this.user_name}}</td>
+            <td>{{this.department_name}}</td>
+            <td>{{this.vacation_name}}</td>
+            <td>{{this.start}} - {{this.end}} <strong>({{this.days}} päeva)</strong></td>
+            <td>{{this.payment}}</td>
+            <td><i>{{this.info}}</i></td>
+            <td>
+                {{#if (eq this.status "0")}}
+                <span class="badge badge-warning">Ootel</span>
+                {{else if (eq this.status "1")}}
+                <span class="badge badge-success">Kinnitatud</span>
+                {{else if (eq this.status "2")}}
+                <span class="badge badge-danger" data-toggle="tooltip" data-placement="auto" title="" data-original-title="{{this.reason}}">Tagasilükatud</span>
+                <small class="d-block"><i>{{this.reason}}</i></small>
+                {{/if}}
+            </td>
+            <td>
+                {{#if (eq this.status "0")}}
+                <a href="#" class="btn btn-sm btn-danger" onClick="rejectVacation({{id}})"><i class="fal fa-times"></i> Keeldu</a>
+                <a href="#" class="btn btn-sm btn-success" onClick="acceptVacation({{id}})"><i class="fal fa-check"></i> Aksepteeri</a>
+                {{else if (eq this.status "1")}}
+                <a href="#" class="btn btn-sm btn-danger" onClick="rejectVacation({{id}})"><i class="fal fa-times"></i> Keeldu</a>
+                {{else if (eq this.status "2")}}
+                <a href="#" class="btn btn-sm btn-success" onClick="acceptVacation({{id}})"><i class="fal fa-check"></i> Aksepteeri</a>
+                {{/if}}
+            </td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
+{{else}}
+<div class="text-center">
+    <h4>Puhkuseavaldusi ei leitud!</h4>
+</div>
+{{/if}}
+

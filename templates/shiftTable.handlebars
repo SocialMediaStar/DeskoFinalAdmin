@@ -1,0 +1,38 @@
+                                        <table class="table table-bordered mb-0">
+                                            <thead>
+                                                <tr>
+                                                    <th>Ametikohad</th>
+                                                    <th>Kuu</th>
+                                                    <th>Aasta</th>
+                                                    <th>Staatus</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                {{#each shift}}
+                                                <tr class="cursor-pointer" id="shift_{{id}}" onClick="changeShift({{id}})">
+                                                    <td>{{name}}</td>
+                                                    <td>{{month}}</td>
+                                                    <td>{{year}}</td>
+                                                    <td>
+                                                        {{#if (eq status "Ootel")}}
+                                                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                                                <span class="badge badge-dark">Ootel</span>
+                                                            </a>
+                                                            <ul class="dropdown-menu">
+                                                                <li class="p-2"><a href="javascript:void(0)" onClick="ShiftStatusChange({{id}})"><span class="badge badge-dark">Ootel</span></a></li>
+                                                                <li class="p-2"><a href="javascript:void(0)" onClick="ShiftStatusChange({{id}})"><span class="badge badge-success">Valmis</span></a></li>
+                                                            </ul>
+                                                        {{else}}
+                                                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                                                <span class="badge badge-success">Valmis</span>
+                                                            </a>
+                                                            <ul class="dropdown-menu">
+                                                                <li class="p-2"><a href="javascript:void(0)" onClick="ShiftStatusChange({{id}})"><span class="badge badge-success">Valmis</span></a></li>
+                                                                <li class="p-2"><a href="javascript:void(0)" onClick="ShiftStatusChange({{id}})"><span class="badge badge-dark">Ootel</span></a></li>
+                                                            </ul>
+                                                        {{/if}}
+                                                    </td>
+                                                </tr>
+                                                {{/each}}
+                                            </tbody>
+                                        </table>

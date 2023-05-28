@@ -1,0 +1,35 @@
+{{#if this}}
+<table class="table">
+    <thead>
+        <tr>
+            <th>Osakonna nimi</th>
+            <th>Osakonna juht</th>
+            <th>Töötajad</th>
+            <th>Tegevus</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each this}}
+        <tr id="department_{{this.id}}">
+            <td>{{this.name}}</td>
+            <td>
+                {{#if this.lead_name}}
+                <a href="javascript:void(0)" onClick="departmentLeadView({{this.id}})">{{this.lead_name}}</a>
+                {{else}}
+                <span class="badge badge-dark">Pole määratud</span>
+                {{/if}}
+                </td>
+            <td><a href="javascript:void(0)" onClick="departmentEmployees({{this.id}})">{{employees}}</a></td>
+            <td>
+                <a href="javascript:void(0)" onClick="departmentEditData({{this.id}})"><i class="fal fa-edit"></i></a>
+                <a href="javascript:void(0)" onClick="departmentDelete({{this.id}})"><i class="fal fa-trash-alt"></i></a>
+            </td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
+{{else}}
+<div class="col-xl-12 text-center">
+    <h4>Pole ühtegi osakonda seatud.</h4>
+</div>
+{{/if}}

@@ -1,0 +1,43 @@
+{{#if this}}
+{{#each this}}
+<div class="col-xl-12">
+    <div id="c_{{id}}" class="card border shadow-0 mb-1 shadow-sm-hover" data-filter-tags="{{fname}} {{lname}}">
+        <div class="card-body border-faded border-top-0 border-left-0 border-right-0 rounded-top">
+            <div class="d-flex flex-row align-items-center">
+                <div class="info-card-text flex-1">
+                    <a href="javascript:void(0);" class="fs-xl text-truncate text-truncate-lg text-info" data-toggle="dropdown" aria-expanded="false">
+                        {{fname}} {{lname}}
+                        <i class="fal fa-angle-down d-inline-block ml-1 fs-md"></i>
+                    </a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="employee.php?uid={{id}}">Vaata profiili</a>
+                        <a class="dropdown-item" href="#">Saada teade</a>
+                    </div>
+                    <span class="text-truncate text-truncate-xl">{{department_name}}</span>
+                </div>
+                <button class="js-expand-btn btn btn-sm btn-default" data-toggle="collapse" data-target="#c_{{id}} > .card-body + .card-body" aria-expanded="false">
+                    <span class="collapsed-hidden"><i class="fal fa-chevron-down"></i></span>
+                    <span class="collapsed-reveal"><i class="fal fa-chevron-up"></i></span>
+                </button>
+            </div>
+        </div>
+        <div class="card-body p-0 collapse">
+            <div class="p-3">
+                <a href="tel:+13174562564" class="mt-1 d-block fs-sm fw-400 text-dark">
+                    <i class="fas fa-mobile-alt text-muted mr-2"></i> {{phone}}</a>
+                <a href="mailto:oliver.kopyov@smartadminwebapp.com" class="mt-1 d-block fs-sm fw-400 text-dark">
+                    <i class="fas fa-mouse-pointer text-muted mr-2"></i> {{email}}</a>
+                <div class="d-flex flex-row mt-2">
+                    <a href="employee.php?uid={{id}}" class="mr-2 btn btn-primary">Vaata profiili</a>
+                    <a href="javascript:void(0);" class="mr-2 btn btn-primary">Saada teade</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{{/each}}
+{{else}}
+<div class="col-xl-12 text-center">
+    <h4>Pole ühtegi töötajat.</h4>
+</div>
+{{/if}}

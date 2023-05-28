@@ -1,0 +1,33 @@
+    <div class="modal-body">
+          <div class="row">
+            <div class="col-lg-12">
+                <div class="d-flex mb-3">
+                  <div class="p-2"><h4><strong>{{worker}}</strong> staatus: <span class="badge badge-{{badge}}">{{legend}}</span></h4></div>
+                  <div class="ml-auto p-2"><button type="button" onClick="deleteShiftDetailView({{shift_detail_id}},{{shift_id}})" class="btn btn-xs btn-danger"><i class="fas fa-trash-alt"></i> Eemalda</button></div>
+                </div>
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th class="text-center">Kuupäev</th>
+                      <th class="text-center">Algus</th>
+                      <th class="text-center">Lõpp</th>
+                      <th class="text-center">Kestus</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="text-center">{{cycle}}</td>
+                      <td class="text-center">{{startTime}}</td>
+                      <td class="text-center">{{endTime}}</td>
+                      <td class="text-center">{{workhours}} h</td>
+                    </tr>
+                </table>
+            </div>
+          </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" data-dismiss="modal">Sulge</button>
+     
+    </div>
+

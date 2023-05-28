@@ -1,0 +1,44 @@
+<div class="table-responsive">
+  <table class="table table-bordered mt-3 table-hover" id="example">
+    <thead class="thead-light text-center">
+      <tr>
+        <th class="px-2" style="vertical-align: middle;">Töötaja</th>
+        {{#each days}}
+        <th class="pr-2 pl-1 f-11">{{this.day}}
+          <span class="text-dark-grey f-10">
+            {{this.dayName}}
+          </span>
+        </th>
+        {{/each}}
+        <th class="text-right px-2">Kokku tunde</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each workers}}
+      <tr>
+        <td class="w-30 px-2"> 
+          <div class="media align-items-center mw-250">
+            <div class="media-body ">
+              <h6 class="mb-0 text-center">
+                <a href="https://demo.worksuite.biz/account/employees/1" class="text-darkest-grey ">{{this.fname}} {{this.lname}}</a>
+              </h6>
+            </div>
+          </div>
+        </td>
+        {{#each this.details}}
+        <td class="px-1 text-center">
+          {{#if (eq this.shift_detail_id "0")}}
+          <span class="cursor-pointer add" data-shift_id="{{shift_id}}" data-date="{{@index}}" data-worker_id="{{this.worker_id}}"><i class="fal fa-plus"></i></span>
+          {{else}}
+          <span class="cursor-pointer badge badge-{{legend}} view" data-shift_id="{{shift_id}}" data-date="{{@index}}" data-worker_id="{{this.worker_id}}">&nbsp;&nbsp;&nbsp;</span>
+          {{/if}}
+        </td>
+        {{/each}}
+        <td class="text-dark f-w-500 text-right attendance-total px-2 w-100">
+          <span class="text-lightest">{{workhours}} h</span>
+        </td>
+      </tr>
+      {{/each}}
+    </tbody>
+  </table>
+</div>

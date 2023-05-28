@@ -1,0 +1,52 @@
+<div class="csc flex-1 h-100">
+    <div id="chat_container" class="w-100 p-4 ">
+        {{#each data}}
+        {{#if (eq this.user_sent "0")}}
+        <div class="chat-segment chat-segment-sent">
+            <div class="chat-message">
+                <p>
+                    {{body}}
+                </p>
+            </div>
+            <div class="text-right fw-300 text-muted mt-1 fs-xs">
+                {{created}}
+            </div>
+        </div>
+        {{else}}
+        <div class="chat-segment chat-segment-get">
+            <div class="chat-message">
+                <p>
+                    {{body}}
+                </p>
+            </div>
+            <div class="fw-300 text-muted mt-1 fs-xs">
+                {{created}}
+            </div>
+        </div>
+        {{/if}}
+        {{/each}}
+    </div>
+</div>
+<div class="d-flex flex-column">
+    <form method="POST" action="javascript:void(0)" id="sendMessage">
+        <input type="hidden" name="sendMessage" value="1">
+        <input type="hidden" name="employee_id" value="{{this.employee.employee_id}}">
+        <input type="hidden" name="message_id" value="{{this.employee.id}}">
+    <div class="border-faded border-right-0 border-bottom-0 border-left-0 flex-1 mr-3 ml-3 position-relative shadow-top">
+        <div class="pt-3 pb-1 pr-0 pl-0 rounded-0" tabindex="-1">
+            <div id="msgr_input" contenteditable="true" data-placeholder="Sinu sõnum..." class="height-10 form-content-editable"></div>
+        </div>
+    </div>
+    <div class="height-8 px-3 d-flex flex-row align-items-center flex-wrap flex-shrink-0">
+        <!--- <a href="javascript:void(0);" class="btn btn-icon fs-xl mr-1" data-toggle="tooltip" data-original-title="Lisa fail" data-placement="top">
+            <i class="fal fa-paperclip color-fusion-300"></i>
+        </a>
+        <a href="javascript:void(0);" class="btn btn-icon fs-xl mr-1" data-toggle="tooltip" data-original-title="Lisa pilt" data-placement="top">
+            <i class="fal fa-camera color-fusion-300"></i>
+        </a>--->
+        <div class="ml-auto">
+            <button href="javascript:void(0);" type="submit" class="btn btn-info">Saada</button>
+        </div>
+    </div>
+    </form>
+</div>

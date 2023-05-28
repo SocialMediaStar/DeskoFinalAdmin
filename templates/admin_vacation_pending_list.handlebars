@@ -1,0 +1,28 @@
+<ul class="list-group shadow-5">
+    {{#each pending}}
+    <li class="list-group-item cursor-pointer" onClick="loadVacationPendingData({{vacation_id}})">
+        <div class="d-flex">
+            <div class="p-2"><img src="{{#if avatar}}{{avatar}}{{else}}http://127.0.0.1/desko/img/default.png{{/if}}" class="profile-image rounded-circle" alt="Dr. Codex Lantern"></div>
+            <div class="p-2">
+                <a href="javascript:void(0)" class="fs-xl">{{fname}} {{lname}}</a>
+                <small class="d-block text-danger fs-sm">{{start}} - {{end}}</small>
+                {{#if (eq type_id '1')}} 
+                <span class="badge badge-primary badge-pill">Põhipuhkus</span>
+                {{else if (eq type_id '2')}}
+                <span class="badge badge-info badge-pill">Lapsepuhkus</span>
+                {{else if (eq type_id '3')}}
+                <span class="badge badge-success badge-pill">Õppepuhkus</span>
+                {{/if}}
+            </div>
+            <div class="ml-auto p-2">
+                <a href="javascript:void(0);" onClick="rejectVacation({{vacation_id}},{{user_id}})" class="btn btn-danger btn-md btn-icon rounded-circle ml-2">
+                    <i class="fal fa-times"></i>
+                </a>
+                <a href="javascript:void(0);" onClick="acceptVacation({{vacation_id}},{{user_id}})" class="btn btn-success btn-md btn-icon rounded-circle ml-2">
+                    <i class="fal fa-check"></i>
+                </a>
+            </div>
+        </div>
+    </li>
+    {{/each}}
+ </ul>

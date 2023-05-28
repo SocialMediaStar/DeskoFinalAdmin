@@ -1,0 +1,33 @@
+{{#if this.data}}
+<table class="table">
+    <thead>
+        <tr>
+            <th>Nimi</th>
+            <th>Info</th>
+            <th>Ligipääs</th>
+            <th>Tegevus</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each this.data}}
+        <tr id="documents_{{this.id}}">
+            <td>{{this.name}}</td>
+            <td>{{this.info}}</td>
+            <td><a href="javascript:void(0)" onClick="documentsAccess({{this.id}})">{{this.access}}</a>
+            </td>
+            <td>
+                <a href="javascript:void(0)" onClick="documentsViewLog({{this.id}})"><i class="fal fa-history"></i></a>
+                <a href="javascript:void(0)" onClick="documentsEditData({{this.id}})"><i class="fal fa-edit"></i></a>
+                <a href="javascript:void(0)" onClick="documentsDelete({{this.id}})"><i class="fal fa-trash-alt"></i></a>
+                <a href="javascript:void(0)" onClick="documentsAddUser({{this.id}})"><i class="fal fa-user-plus"></i></a>
+                <a href="javascript:void(0)" onClick="documentsDownload({{this.id}})"><i class="fal fa-download"></i></a>
+            </td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
+{{else}}
+<div class="col-xl-12 text-center">
+    <h4>Pole ühtegi documenti lisatud.</h4>
+</div>
+{{/if}}

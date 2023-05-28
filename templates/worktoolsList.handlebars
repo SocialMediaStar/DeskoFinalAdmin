@@ -1,0 +1,33 @@
+{{#if this.data}}
+<table class="table">
+    <thead>
+        <tr>
+            <th>Nimi</th>
+            <th>Info</th>
+            <th>Kogus</th>
+            <th>Kasutusel</th>
+            <th>Tegevus</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each this.data}}
+        <tr id="worktool_{{this.id}}">
+            <td>{{this.name}}</td>
+            <td>{{this.info}}</td>
+            <td>{{this.quantity}}</td>
+            <td><a href="javascript:void(0)" onClick="worktoolsUsed({{this.id}})">{{this.used}}</a></td>
+            <td>
+                <a href="javascript:void(0)" onClick="worktoolsViewLog({{this.id}})"><i class="fal fa-history"></i></a>
+                <a href="javascript:void(0)" onClick="worktoolsEditData({{this.id}})"><i class="fal fa-edit"></i></a>
+                <a href="javascript:void(0)" onClick="worktoolsDelete({{this.id}})"><i class="fal fa-trash-alt"></i></a>
+                <a href="javascript:void(0)" onClick="worktoolsAddUser({{this.id}})"><i class="fal fa-user-plus"></i></a>
+            </td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
+{{else}}
+<div class="col-xl-12 text-center">
+    <h4>Pole ühtegi töövahendit määratletud.</h4>
+</div>
+{{/if}}

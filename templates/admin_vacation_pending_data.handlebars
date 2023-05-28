@@ -1,0 +1,105 @@
+                                <div class="card border shadow-5">
+                                    <div class="card-header">
+                                    <div class="d-flex">
+                                            <div class="p-2"><img src="{{#if pending.avatar}}{{pending.avatar}}{{else}}http://127.0.0.1/desko/img/default.png{{/if}}" class="profile-image rounded-circle" alt="Dr. Codex Lantern"></div>
+                                            <div class="p-2">
+                                                <a href="" class="fs-xl d-block">{{pending.fname}} {{pending.lname}}</a>
+                                                {{#if (eq pending.type_id '1')}} 
+                                                <span class="badge badge-primary badge-pill">Põhipuhkus</span>
+                                                {{else if (eq pending.type_id '2')}}
+                                                <span class="badge badge-info badge-pill">Lapsepuhkus</span>
+                                                {{else if (eq pending.type_id '3')}}
+                                                <span class="badge badge-success badge-pill">Õppepuhkus</span>
+                                                {{/if}}
+                                                (Kokku saada {{avaible}} päeva)
+                                            </div>
+                                            <div class="ml-auto p-2">
+                                                <a href="javascript:void(0);" onClick="rejectVacation({{pending.vacation_id}},{{user_id}})" class="btn btn-danger btn-md btn-icon rounded-circle ml-2">
+                                                    <i class="fal fa-times"></i>
+                                                </a>
+                                                <a href="javascript:void(0);" onClick="acceptVacation({{pending.vacation_id}},{{user_id}})" class="btn btn-success btn-md btn-icon rounded-circle ml-2">
+                                                    <i class="fal fa-check"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="d-flex">
+                                            <div class="p-2">
+                                                <div class="card" style="width:150px;">
+                                                    <div class="card-header text-center">
+                                                        <h4 class="mb-0"><strong>{{start.month}}</strong></h4>
+                                                    </div>
+                                                    <div class="card-body text-center">
+                                                        <h1 class="fw-900"><strong>{{start.date}}</strong></h1>
+                                                        {{start.day}}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="p-2 align-self-center">
+                                                <i class="fal fa-3x  fa-arrow-right"></i>
+                                            </div>
+                                            <div class="p-2">
+                                                <div class="card" style="width:150px;">
+                                                    <div class="card-header text-center">
+                                                        <h4 class="mb-0"><strong>{{end.month}}</strong></h4>
+                                                    </div>
+                                                    <div class="card-body text-center">
+                                                        <h1 class="fw-900"><strong>{{end.date}}</strong></h1>
+                                                        {{end.day}}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="p-2">
+                                                <h4>Lisainfo</h4>
+                                                <p><i>{{pending.info}}</i></p>
+                                            </div>
+                                            <div class="ml-auto p-2">
+                                                <ul class="list-unstyled">
+                                                    <li class="text-muted">
+                                                        Esitamise kuupäev: <strong>{{pending.created}}</strong>
+                                                    </li>
+                                                    <li class="text-muted">
+                                                        Kokku saada: <strong>{{avaible}} päeva</strong>
+                                                    </li>
+                                                    <li class="text-muted">
+                                                        Päevade arv: <strong>{{pending.days}}</strong>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card-footer">
+                                        <h4><strong>Kes veel puhkavad sellel ajal:</strong></h4>
+                                        {{#if others}}
+                                        <table class="table table-striped">
+                                            <thead class="bg-primary text-light">
+                                                <th>Nimi</th>
+                                                <th>Periood</th>
+                                                <th class="text-center">Päevi kokku</th>
+                                                <th class="text-center">Puhkuse tüüp</th>
+                                            </thead>
+                                            <tbody>
+                                                {{#each others}}
+                                                <tr>
+                                                    <td><a href="">{{this.fname}} {{this.lname}}</a></td>
+                                                    <td>{{this.start}} - {{this.end}}</td>
+                                                    <td width="10%" class="text-center">{{this.days}}</td>
+                                                    <td width="15%" class="text-center">
+                                                        {{#if (eq this.type_id '1')}} 
+                                                        <span class="badge badge-primary badge-pill">Põhipuhkus</span>
+                                                        {{else if (eq this.type_id '2')}}
+                                                        <span class="badge badge-info badge-pill">Lapsepuhkus</span>
+                                                        {{else if (eq this.type_id '3')}}
+                                                        <span class="badge badge-success badge-pill">Õppepuhkus</span>
+                                                        {{/if}}
+                                                    </td>
+                                                </tr>
+                                                {{/each}}
+                                            </tbody>
+                                        </table>
+                                        {{else}}
+                                        <p>Kedagi pole sel päeval puhkusel!</p>
+                                        {{/if}}
+                                    </div>
+                                </div>

@@ -1,0 +1,47 @@
+{{#if this.data}}
+<table class="table">
+    <thead>
+        <th>Töötaja</th>
+        <th>Osakond</th>
+        <th>Lähetuse sisu</th>
+        <th>Periood</th>
+        <th>Staatus</th>
+        <th>Tegevus</th>
+    </thead>
+    <tbody>
+        {{#each data}}
+        <tr>
+            <td>{{this.user_name}}</td>
+            <td>{{this.department_name}}</td>
+            <td>{{this.info}}</td>
+            <td>{{this.start}} - {{this.end}}</td>
+            <td>
+                {{#if (eq this.status "0")}}
+                <span class="badge badge-warning">Ootel</span>
+                {{else if (eq this.status "1")}}
+                <span class="badge badge-success">Kinnitatud</span>
+                {{else if (eq this.status "2")}}
+                <span class="badge badge-danger" data-toggle="tooltip" data-placement="auto" title="" data-original-title="{{this.reason}}">Tagasilükatud</span>
+                <small class="d-block"><i>{{this.reason}}</i></small>
+                {{/if}}
+            </td>
+            <td>
+                {{#if (eq this.status "0")}}
+                <a href="#" class="btn btn-sm btn-danger" onClick="rejectTrip({{id}})"><i class="fal fa-times"></i> Keeldu</a>
+                <a href="#" class="btn btn-sm btn-success" onClick="acceptTrip({{id}})"><i class="fal fa-check"></i> Aksepteeri</a>
+                {{else if (eq this.status "1")}}
+                <a href="#" class="btn btn-sm btn-danger" onClick="rejectTrip({{id}})"><i class="fal fa-times"></i> Keeldu</a>
+                {{else if (eq this.status "2")}}
+                <a href="#" class="btn btn-sm btn-success" onClick="acceptTrip({{id}})"><i class="fal fa-check"></i> Aksepteeri</a>
+                {{/if}}
+            </td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
+{{else}}
+<div class="text-center">
+    <h4>Avaldusi ei leitud!</h4>
+</div>
+{{/if}}
+

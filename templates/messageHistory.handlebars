@@ -1,0 +1,24 @@
+
+{{#if this.data}}
+
+    {{#each data}}
+    <li>
+        <div class="d-flex w-100 px-3 py-2 text-dark hover-white cursor-pointer show-child-on-hover" onClick="viewMessage({{id}},{{employee_id}})">
+            <div class="profile-image-md rounded-circle" style="background-image:url('assets/img/default.png'); background-size: cover;"></div>
+            <div class="px-2 flex-1">
+                <div class="text-truncate text-truncate-md">
+                    {{this.user_name}}
+                    <small class="d-block text-truncate text-truncate-md text-muted">
+                        {{this.created}}
+                    </small>
+                </div>
+            </div>
+            <div class="position-absolute pos-right mt-2 mr-3">
+                {{#if (eq this.user_seen "0")}}
+                <span class="badge badge-info">Uus</span>
+                {{/if}}
+            </div>
+        </div>
+    </li>
+    {{/each}}
+{{/if}}

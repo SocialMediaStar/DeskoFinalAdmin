@@ -1,0 +1,56 @@
+<div class="row">
+    {{#if (eq this.avaible "1")}}
+    <div class="col-xl-12">
+        <div class="form-group">
+            <label class="form-label">Puhkuse tüüp</label>
+            <select class="form-control" name="vacation_type" id="vacation_type">
+                <option value="0">Vali tüüp</option>
+                {{#if (eq this.main '1')}}
+                    <option value="1">Põhipuhkus</option>
+                {{/if}}
+                {{#if (eq this.kids '1')}}
+                    <option value="2">Lapsepuhkus</option>
+                {{/if}}
+                {{#if (eq this.school '1')}}
+                    <option value="3">Õppepuhkus</option>
+                {{/if}}
+            </select>              
+        </div>
+    </div>
+    <div class="col-lg-6 mt-2">
+        <div class="form-group">
+            <label>Algus</label>
+            <input type="date" class="form-control" name="vacation_start" id="vacation_start" placeholder="Vali kuupäev">
+        </div>
+    </div>
+    <div class="col-lg-6 mt-2">
+        <div class="form-group">
+            <label>Lõpp</label>
+            <input type="date" class="form-control" name="vacation_end" id="vacation_end" placeholder="Vali kuupäev">
+        </div>
+    </div>
+    <div class="col-lg-12 mt-2">
+        <div class="form-group">
+            <textarea class="form-control" name="vacation_info" id="vacation_info" rows="3" placeholder="Kommentaar"></textarea>
+        </div>
+    </div>
+    <div class="col-lg-12 mt-2">
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="payment" id="exampleRadios1" value="option1" checked>
+            <label class="form-check-label" for="exampleRadios1">
+                Koos palgaga
+            </label>
+            </div>
+            <div class="form-check">
+            <input class="form-check-input" type="radio" name="payment" id="exampleRadios2" value="option2">
+            <label class="form-check-label" for="exampleRadios2">
+                Puhkusele jäädes
+            </label>
+        </div>
+    </div>
+    {{else}}
+    <div class="col-xl-12">
+        <h4 class="text-center">Kahjuks töötajal pole ühtegi puhkusepäeva saada enam!</h4>
+    </div>
+    {{/if}}
+</div>
